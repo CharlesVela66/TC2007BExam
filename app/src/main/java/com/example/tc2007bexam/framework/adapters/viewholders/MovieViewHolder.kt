@@ -17,7 +17,16 @@ class MovieViewHolder(private val binding: ItemMovieBinding) : RecyclerView.View
 
     fun bind(item: Result, context: Context){
         binding.TVName.text = item.original_title
-        getMovieInfo(item.poster_path,binding.IVPhoto,context)
+
+        // Limit the overview text to 30 characters and append "..." if it exceeds
+        val overviewText = if (item.overview.length > 30) {
+            "${item.overview.substring(0, 30)}..."
+        } else {
+            item.overview
+        }
+        binding.TVOverview.text = overviewText
+
+        getMovieInfo(item.poster_path, binding.IVPhoto, context)
     }
 
     private fun getMovieInfo(url:String, imageView: ImageView, context: Context){

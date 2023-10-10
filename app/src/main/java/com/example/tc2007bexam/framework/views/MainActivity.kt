@@ -3,6 +3,7 @@ package com.example.tc2007bexam.framework.views
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tc2007bexam.data.network.movie.Movie
 import com.example.tc2007bexam.data.network.movie.Result
@@ -29,16 +30,16 @@ class MainActivity: AppCompatActivity() {
         setContentView(binding.root)
     }
 
-    private fun setUpRecyclerView(dataForList: List<Result>){
+    private fun setUpRecyclerView(dataForList: List<Result>) {
         binding.RVMovie.setHasFixedSize(true)
-        val linearLayoutManager = LinearLayoutManager(
-            this,
-            LinearLayoutManager.VERTICAL,
-            false)
-        binding.RVMovie.layoutManager = linearLayoutManager
+
+        val gridLayoutManager = GridLayoutManager(this, 3)
+        binding.RVMovie.layoutManager = gridLayoutManager
+
         adapter.MovieAdapter(dataForList, this)
         binding.RVMovie.adapter = adapter
     }
+
     private fun initializeObservers(){
         viewModel.movieLiveData.observe(this){ movie ->
             setUpRecyclerView(movie.results)

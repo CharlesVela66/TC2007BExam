@@ -1,14 +1,27 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
+    <!-- Text at the top -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:layout_marginTop="16dp"
+        android:text="Charlie's Movie Gallery"
+        android:id="@+id/TVOverview"
+        />
+
+    <!-- RecyclerView below the text -->
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/RVMovie"
-        />
-
+        android:layout_below="@id/TVOverview"
+        android:layout_marginTop="8dp"
+    />
 </RelativeLayout>
